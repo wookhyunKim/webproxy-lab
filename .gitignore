@@ -2,7 +2,7 @@
 tiny/tiny
 tiny/cgi-bin/adder
 proxy
-
+*.json
 # MacOS
 .DS_Store
 .AppleDouble

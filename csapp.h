@@ -40,6 +40,34 @@
 typedef struct sockaddr SA;
 /* $end sockaddrdef */
 
+// =========================================================================================================
+// struct sockaddr{
+//     uint16_t sa_family;
+//     char sa_data[14];
+// };
+// struct addrinfo{
+//     int ai_flags;
+//     int ai_family;
+//     int ai_socktype;
+//     int ai_protocol;
+//     char *ai_canonname;
+//     size_t ai_addrlen;
+//     struct sockaddr *ai_addr;
+//     struct addrinfo *ai_next;
+// };
+
+// struct sockaddr_in{
+//     uint16_t sin_family;
+//     uint16_t sin_port;
+//     struct in_addr sin_addr;
+//     unsigned char sin_zero[8];
+// };
+
+
+// =========================================================================================================
+
+
+
 /* Persistent state for the robust I/O (Rio) package */
 /* $begin rio_t */
 #define RIO_BUFSIZE 8192

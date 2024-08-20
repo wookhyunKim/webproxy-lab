@@ -946,7 +946,14 @@ ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen)
  *       -2 for getaddrinfo error
  *       -1 with errno set for other errors.
  */
+
+
 /* $begin open_clientfd */
+/*
+1. 주어진 호스트 이름과 포트 번호를 사용해 서버 주소 정보를 얻는다.
+2. 그 주소 정보 중 하나에 성공적으로 연결할 수 있는 소켓을 생성하고 연결한다.
+3. 성공적으로 연결된 소켓의 파일 디스크립터를 반환한다.
+*/
 int open_clientfd(char *hostname, char *port) {
     int clientfd, rc;
     struct addrinfo hints, *listp, *p;
@@ -998,7 +1005,7 @@ int open_listenfd(char *port)
 {
     struct addrinfo hints, *listp, *p;
     int listenfd, rc, optval=1;
-
+    printf("====port num ==%s\n",port);
     /* Get a list of potential server addresses */
     memset(&hints, 0, sizeof(struct addrinfo));
     hints.ai_socktype = SOCK_STREAM;             /* Accept connections */
