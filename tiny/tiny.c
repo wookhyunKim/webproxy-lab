@@ -264,6 +264,10 @@ void serve_static(int fd, char *filename, int filesize)
   srcfd = Open(filename, O_RDONLY, 0);
   // 파일을 메모리에 매핑 파일의 내용을 가상 메모리 주소공간에 매핑하고 시작주소를 srcp로 반환 파일내용을 메모리처럼 읽을 수 있다.
   srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd, 0);
+  printf("====================== size of scrcp %d \n", sizeof(*srcp));
+  // malloc
+  // srcp = (int) malloc(sizeof(int) * filesize);
+
   Close(srcfd);
   // 매핑된 파일 내용을 클라이언트에 전송
   Rio_writen(fd, srcp, filesize);
@@ -282,6 +286,8 @@ void get_filetype(char *filename, char *filetype)
     strcpy(filetype, "image/png");
   else if (strstr(filename, ".jpg"))
     strcpy(filetype, "image/jpeg");
+  else if (strstr(filename, ".mp4"))  // MP4 비디오 파일 처리 
+    strcpy(filetype, "video/mp4");
   else
     strcpy(filetype, "text/plain");
 }
